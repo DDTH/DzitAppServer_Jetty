@@ -1,0 +1,21 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+
+<!-- ================================================================== Configure 
+	and deploy the ROOT web application ===================================================================== -->
+
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+	<Set name="serverClasses">
+		<Array type="java.lang.String">
+			<Item>-org.eclipse.jetty.server.</Item>
+		</Array>
+	</Set>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- Required minimal context configuration : -->
+	<!-- + contextPath -->
+	<!-- + war OR resourceBase -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<Set name="contextPath">/</Set>
+	<Set name="resourceBase">
+		<SystemProperty name="jetty.home" default="." /><![CDATA[/contexts/ROOT]]></Set>
+</Configure>
