@@ -9,7 +9,7 @@ rem set OPTS_JVM=-server -Xms128m -Xmx128m -Djava.net.preferIPv4Stack=true -Djav
 rem set OPTS_ACTIVEMQ=-Dactivemq.home=%ACTIVEMQ_HOME% -Dactivemq.base=%ACTIVEMQ_BASE% -Dorg.apache.activemq.UseDedicatedTaskRunner=false -Dorg.apache.activemq.store.kahadb.LOG_SLOW_ACCESS_TIME=200
 rem set JETTY_OPTS=-Djetty.home=%JETTY_HOME% -Dhazelcast.mancenter.home=%JETTY_HOME%\data\hazelcast -Dspring.profiles.active=dev %OPTS_ACTIVEMQ% %OPTS_JMX% %OPTS_JVM%
 
-set STOP.PORT=8055
+set STOP.PORT=8005
 set STOP.KEY=jetty_stop_key
 set STOP.WAIT=10
 set JAVA_EXEC=java
