@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<project name="JSP Precompile" default="jspc">
+	<property name="jetty.home" value="./" />
+	<property name="dir.tmp" value="${jetty.home}/tmp" />
+	<property name="dir.ROOT" value="${jetty.home}/contexts/ROOT" />
+
+	<path id="compile.jspc">
+		<fileset dir="${jetty.home}">
+			<include name="lib/servlet-api-*.jar" />
+			<include name="lib/jsp/*.jar" />
+		</fileset>
+	</path>
+
+	<path id="compile.classpath">
+		<fileset dir="${dir.ROOT}/WEB-INF/lib">
+			<include name="*.jar" />
+		</fileset>
+		<path refid="compile.jspc" />
+	</path>
+
+	<target name="init">
+		<mkdir dir="${dir.tmp}/${dir.ROOT}/classes" />
+		<mkdir dir="${dir.tmp}/${dir.ROOT}/gen-src" />
+	</target>
+
+	<target name="jspc" depends="init">
+		<taskdef classname="org.apache.jasper.JspC" name="jasper2" classpathref="compile.jspc" />
+		<jasper2 validateXml="false" uriroot="${dir.ROOT}/WEB-INF" addWebXmlMappings="false" compilerSourceVM="1.6" compilerTargetVM="1.6" outputDir="${dir.tmp}/${dir.ROOT}/gen-src" verbose="9" />
+		<javac destdir="${dir.ROOT}/WEB-INF/classes" debug="true" srcdir="${dir.tmp}/${dir.ROOT}/gen-src">
+			<classpath refid="compile.classpath" />
+		</javac>
+	</target>
+</project>
