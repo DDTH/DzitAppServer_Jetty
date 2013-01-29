@@ -24,7 +24,7 @@
 		{
 			String jettyHome = System.getProperty("jetty.home");
 			if (jettyHome != null) {
-				File activeMqDir = new File(jettyHome + "/webapps/activemq");
+				File activeMqDir = new File(jettyHome + "/contexts/activemq");
 				if (activeMqDir.isDirectory()) {
 					%>
 					<li><a href="/activemq">ActiveMQ App</a></li>

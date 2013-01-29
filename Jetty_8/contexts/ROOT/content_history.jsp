@@ -3,6 +3,12 @@
 <%@page import="java.util.*" %>
 <div id="content-wrap">
 	<div id="main">
+        <h2>2013-01-29: v1.0.1</h2>
+        <ul>
+            <li>Add login service DzitAppServer_Realm.</li>
+            <li>Bundle ActiveMQ v5.6.0.</li>
+        </ul>
+        
 		<h2>2013-01-29: v1.0</h2>
 		<p>Start project DzitAppServer_Jetty</p>
 	</div>
