@@ -8,6 +8,7 @@ public void init() throws ServletException {
      super.init();
      //ServletConfig servletConfig = getServletConfig();     
      HazelcastInstance instance = Hazelcast.getDefaultInstance();
+     System.out.println("Hazelcast: " + instance);
 }
 %>
 <%

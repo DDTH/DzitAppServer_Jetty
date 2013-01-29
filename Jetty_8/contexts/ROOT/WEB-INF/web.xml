@@ -28,7 +28,8 @@
 	</servlet>
 	<servlet>
         <servlet-name>HazelcastBootstrap</servlet-name>
-        <jsp-file>/WEB-INF/hazelcast_bootstrap.jsp</jsp-file>
+        <servlet-class>org.apache.jsp.hazelcast_005fbootstrap_jsp</servlet-class>
+        <!-- <jsp-file>/WEB-INF/hazelcast_bootstrap.jsp</jsp-file> -->
         <load-on-startup>10</load-on-startup>
     </servlet>
 
@@ -36,6 +37,10 @@
 		<servlet-name>ThirdPartyResources</servlet-name>
 		<url-pattern>/thirdparty/*</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+        <servlet-name>HazelcastBootstrap</servlet-name>
+        <url-pattern>/hehe/*</url-pattern>
+    </servlet-mapping>
 
 	<error-page>
 		<error-code>404</error-code>
