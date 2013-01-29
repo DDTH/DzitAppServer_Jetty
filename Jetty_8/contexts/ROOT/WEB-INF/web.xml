@@ -37,10 +37,6 @@
 		<servlet-name>ThirdPartyResources</servlet-name>
 		<url-pattern>/thirdparty/*</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping>
-        <servlet-name>HazelcastBootstrap</servlet-name>
-        <url-pattern>/hehe/*</url-pattern>
-    </servlet-mapping>
 
 	<error-page>
 		<error-code>404</error-code>

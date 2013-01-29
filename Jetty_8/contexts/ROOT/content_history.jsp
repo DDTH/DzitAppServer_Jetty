@@ -3,6 +3,11 @@
 <%@page import="java.util.*" %>
 <div id="content-wrap">
 	<div id="main">
+        <h2>2013-01-29: v1.0.2</h2>
+        <ul>
+            <li>Bundle Hazelcast Control Center.</li>
+        </ul>
+	
         <h2>2013-01-29: v1.0.1</h2>
         <ul>
             <li>Add login service DzitAppServer_Realm.</li>
