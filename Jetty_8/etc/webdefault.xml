@@ -269,6 +269,18 @@
     <servlet-name>jsp</servlet-name>
     <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
     <init-param>
+      <param-name>development</param-name>
+      <param-value>false</param-value>
+    </init-param>
+    <init-param>
+      <param-name>reloading</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>checkInterval</param-name>
+      <param-value>10</param-value>
+    </init-param>
+    <init-param>
       <param-name>logVerbosityLevel</param-name>
       <param-value>DEBUG</param-value>
     </init-param>
