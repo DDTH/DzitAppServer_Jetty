@@ -59,21 +59,17 @@
 			<fileset dir="${jetty.src}" />
 		</copy>
 		<copy overwrite="true" file="${dir.script.templates}/jettyserver_developer.bat" tofile="${dir.disttest}/bin/jettyserver.bat" />
-		<!--
-		<copy overwrite="true" file="${dir.script.templates}/catalina_developer.sh" tofile="${dir.disttest}/bin/catalina.sh" />
-		-->
+		<copy overwrite="true" file="${dir.script.templates}/jettyserver_developer.sh" tofile="${dir.disttest}/bin/jettyserver.sh" />
 
 		<replace file="${dir.disttest}/bin/jettyserver.bat" token="@@JETTY_HOME@@" value="${dir.disttest}" />
 		<replace file="${dir.disttest}/bin/jettyserver.bat" token="rem set JETTY" value="set JETTY" />
 		<replace file="${dir.disttest}/bin/jettyserver.bat" token="rem set ACTIVEMQ" value="set ACTIVEMQ" />
 		<replace file="${dir.disttest}/bin/jettyserver.bat" token="rem set OPTS" value="set OPTS" />
 
-        <!--
-		<replace file="${dir.disttest}/bin/catalina.sh" token="@@CATALINA_HOME@@" value="${dir.disttest}" />
-		<replace file="${dir.disttest}/bin/catalina.sh" token="#CATALINA" value="CATALINA" />
-		<replace file="${dir.disttest}/bin/catalina.sh" token="#ACTIVEMQ" value="ACTIVEMQ" />
-		<replace file="${dir.disttest}/bin/catalina.sh" token="#OPTS" value="OPTS" />
-		-->
+		<replace file="${dir.disttest}/bin/jettyserver.sh" token="@@JETTY_HOME@@" value="${dir.disttest}" />
+		<replace file="${dir.disttest}/bin/jettyserver.sh" token="#JETTY" value="JETTY" />
+		<replace file="${dir.disttest}/bin/jettyserver.sh" token="#ACTIVEMQ" value="ACTIVEMQ" />
+		<replace file="${dir.disttest}/bin/jettyserver.sh" token="#OPTS" value="OPTS" />
 	</target>
 
 	<target name="release" description="Build for release">

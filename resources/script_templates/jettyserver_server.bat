@@ -2,14 +2,14 @@
 rem
 rem Startup script for jetty under Windows systems.
 
-rem Environment: Development
+rem Environment: Server
 
 rem set JETTY_HOME=@@JETTY_HOME@@
 rem set ACTIVEMQ_HOME=%JETTY_HOME%\activemq
 rem set ACTIVEMQ_BASE=%ACTIVEMQ_HOME%
-rem set OPTS_JVM=-server -Xms128m -Xmx128m -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:PrintFLSStatistics=1 -XX:PrintCMSStatistics=1 -XX:+PrintTenuringDistribution -XX:+PrintGCDetails -XX:+PrintGCDateStamps -verbose:gc -Xloggc:%JETTY_HOME%\logs\garbage.log
+rem set OPTS_JVM=-server -Xms2048m -Xmx2048m -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true -XX:+UseParNewGC -XX:+UseConcMarkSweepGC
 rem set OPTS_ACTIVEMQ=-Dactivemq.home=%ACTIVEMQ_HOME% -Dactivemq.base=%ACTIVEMQ_BASE% -Dorg.apache.activemq.UseDedicatedTaskRunner=false -Dorg.apache.activemq.store.kahadb.LOG_SLOW_ACCESS_TIME=200
-rem set JETTY_OPTS=-Djetty.home=%JETTY_HOME% -Djetty.logs=%JETTY_HOME%/logs -Djava.io.tmpdir=%JETTY_HOME%/tmp -Dhazelcast.mancenter.home=%JETTY_HOME%\data\hazelcast -Dspring.profiles.active=dev %OPTS_ACTIVEMQ% %OPTS_JVM%
+rem set JETTY_OPTS=-Djetty.home=%JETTY_HOME% -Djetty.logs=%JETTY_HOME%/logs -Djava.io.tmpdir=%JETTY_HOME%/tmp -Dhazelcast.mancenter.home=%JETTY_HOME%\data\hazelcast -Dspring.profiles.active=production %OPTS_ACTIVEMQ% %OPTS_JVM%
 
 set STOP.PORT=8005
 set STOP.KEY=jetty_stop_key
@@ -46,11 +46,11 @@ goto end
 	goto execCmd
 	
 :doRun
-	set ACTION=
+	set ACTION=--daemon
 	goto execCmd
 
 :doStart
-	set ACTION=
+	set ACTION=--daemon
 	if not "%OS%" == "Windows_NT" goto noTitle
 	if "%TITLE%" == "" set TITLE=Jetty
 	set JAVA_EXEC=start "%TITLE%" %JAVA_EXEC%
