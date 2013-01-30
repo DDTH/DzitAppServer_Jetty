@@ -6,11 +6,29 @@
 <!-- =============================================================== -->
 
 <Configure id="Server" class="org.eclipse.jetty.server.Server">
-	<Get id="oldhandler" name="handler" />
+	<Get id="oldHandler" name="handler" />
 	<Set name="handler">
 		<New id="StatsHandler" class="org.eclipse.jetty.server.handler.StatisticsHandler">
 			<Set name="handler">
-				<Ref id="oldhandler" />
+				<New id="handlers" class="org.eclipse.jetty.server.handler.HandlerCollection">
+					<Set name="handlers">
+						<Array type="org.eclipse.jetty.server.Handler">
+							<Item>
+								<New id="contexts"
+									class="org.eclipse.jetty.server.handler.ContextHandlerCollection" />
+							</Item>
+							<Item>
+								<Ref id="oldHandler" />
+							</Item>
+							<!-- <Item> <New id="defaultHandler" class="org.eclipse.jetty.server.handler.DefaultHandler" 
+								/> </Item> -->
+							<Item>
+								<New id="requestLog" class="org.eclipse.jetty.server.handler.RequestLogHandler" />
+							</Item>
+						</Array>
+					</Set>
+				</New>
+				<!-- <Ref id="oldHandler" /> -->
 			</Set>
 		</New>
 	</Set>
