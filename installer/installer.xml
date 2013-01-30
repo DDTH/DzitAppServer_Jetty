@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-Installer for App Server
+Installer for DzitAppServer
 Author: Thanh Ba Nguyen
 -->
-<project name="AppServer Installer" default="install">
+<project name="DzitAppServer Installer" default="install">
 	<description>
-        Installer for App Server.
+        Installer for DzitAppServer.
     </description>
 
 	<property environment="env" />
@@ -14,16 +14,16 @@ Author: Thanh Ba Nguyen
 	<property name="resources.dir" value="../resources" />
 	<property name="resources-lib.dir" value="${resources.dir}/lib" />
 	<property name="resources-groovy.dir" value="${resources.dir}/groovy" />
-	<property name="tomcat.src.dir" value="../Tomcat_7" />
+	<property name="jetty.src.dir" value="../Jetty_8" />
 	<property name="script.templates.dir" value="../resources/script_templates" />
 
 	<target name="install" description="Install App Server">
-		<!-- check if env CATALINA_HOME is set -->
+		<!-- check if env JETTY_HOME is set -->
 		<if>
-			<isset property="env.CATALINA_HOME" />
+			<isset property="env.JETTY_HOME" />
 			<then>
-				<echo message="Found CATALINA_HOME environment variable: ${env.CATALINA_HOME}." />
-				<property name="install.dir" value="${env.CATALINA_HOME}" />
+				<echo message="Found JETTY_HOME environment variable: ${env.JETTY_HOME}." />
+				<property name="install.dir" value="${env.JETTY_HOME}" />
 			</then>
 			<else>
 				<input message="Install to location?" addproperty="install.dir" />
@@ -56,21 +56,21 @@ Author: Thanh Ba Nguyen
 			<then>
 				<mkdir dir="${install.dir}" />
 				<copy todir="${install.dir}" overwrite="true">
-					<fileset dir="${tomcat.src.dir}" />
+					<fileset dir="${jetty.src.dir}" />
 				</copy>
 
 				<input message="Developer machine mode?" addproperty="developer.machine.mode" validargs="y,n" defaultvalue="y" />
 				<if>
 					<equals arg1="${developer.machine.mode}" arg2="y" />
 					<then>
-						<echo>Developer machine mode: copying catalina.bat and catalina.sh</echo>
-						<copy overwrite="true" file="${script.templates.dir}/catalina_developer.bat" tofile="${install.dir}/bin/catalina.bat" />
-						<copy overwrite="true" file="${script.templates.dir}/catalina_developer.sh" tofile="${install.dir}/bin/catalina.sh" />
+						<echo>Developer machine mode: copying jettyserver.bat and jettyserver.sh</echo>
+						<copy overwrite="true" file="${script.templates.dir}/jettyserver_developer.bat" tofile="${install.dir}/bin/jettyserver.bat" />
+						<copy overwrite="true" file="${script.templates.dir}/jettyserver_developer.sh" tofile="${install.dir}/bin/jettyserver.sh" />
 					</then>
 					<else>
-						<echo>Server machine mode: copying catalina.bat and catalina.sh</echo>
-						<copy overwrite="true" file="${script.templates.dir}/catalina_server.bat" tofile="${install.dir}/bin/catalina.bat" />
-						<copy overwrite="true" file="${script.templates.dir}/catalina_server.sh" tofile="${install.dir}/bin/catalina.sh" />
+						<echo>Server machine mode: copying jettyserver.bat and jettyserver.sh</echo>
+						<copy overwrite="true" file="${script.templates.dir}/jettyserver_server.bat" tofile="${install.dir}/bin/jettyserver.bat" />
+						<copy overwrite="true" file="${script.templates.dir}/jettyserver_server.sh" tofile="${install.dir}/bin/jettyserver.sh" />
 					</else>
 				</if>
 
@@ -87,15 +87,15 @@ Author: Thanh Ba Nguyen
 					</else>
 				</if>
 
-				<replace file="${install.dir}/bin/catalina.bat" token="@@CATALINA_HOME@@" value="${install.dir}" />
-				<replace file="${install.dir}/bin/catalina.bat" token="rem set CATALINA" value="set CATALINA" />
-				<replace file="${install.dir}/bin/catalina.bat" token="rem set ACTIVEMQ" value="set ACTIVEMQ" />
-				<replace file="${install.dir}/bin/catalina.bat" token="rem set OPTS" value="set OPTS" />
+				<replace file="${install.dir}/bin/jettyserver.bat" token="@@JETTY_HOME@@" value="${install.dir}" />
+				<replace file="${install.dir}/bin/jettyserver.bat" token="rem set JETTY" value="set JETTY" />
+				<replace file="${install.dir}/bin/jettyserver.bat" token="rem set ACTIVEMQ" value="set ACTIVEMQ" />
+				<replace file="${install.dir}/bin/jettyserver.bat" token="rem set OPTS" value="set OPTS" />
 
-				<replace file="${install.dir}/bin/catalina.sh" token="@@CATALINA_HOME@@" value="${install.dir}" />
-				<replace file="${install.dir}/bin/catalina.sh" token="#CATALINA" value="CATALINA" />
-				<replace file="${install.dir}/bin/catalina.sh" token="#ACTIVEMQ" value="ACTIVEMQ" />
-				<replace file="${install.dir}/bin/catalina.sh" token="#OPTS" value="OPTS" />
+				<replace file="${install.dir}/bin/jettyserver.sh" token="@@JETTY_HOME@@" value="${install.dir}" />
+				<replace file="${install.dir}/bin/jettyserver.sh" token="#JETTY" value="JETTY" />
+				<replace file="${install.dir}/bin/jettyserver.sh" token="#ACTIVEMQ" value="ACTIVEMQ" />
+				<replace file="${install.dir}/bin/jettyserver.sh" token="#OPTS" value="OPTS" />
 
 				<!-- make .sh files executable on UNIX system -->
 				<chmod dir="${install.dir}/bin" perm="711" includes="**/*.sh" />
@@ -111,8 +111,8 @@ Author: Thanh Ba Nguyen
 					<os family="unix" />
 				</condition>
 
-				<echo message="AppServer has been installed to ${install.dir}. Please set environment variable CATALINA_HOME=${install.dir}" />
-				<echo message="Remember to adjust JVM options (such as min/max memory) in catalina.sh/catalina.bat too!" />
+				<echo message="DzitAppServer has been installed to ${install.dir}. Please set environment variable JETTY_HOME=${install.dir}" />
+				<echo message="Remember to adjust JVM options (such as min/max memory) in jettyserver.sh/jettyserver.bat too!" />
 				<if>
 					<isset property="isUnix" />
 					<then>
