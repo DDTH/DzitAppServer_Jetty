@@ -99,7 +99,7 @@ TMPDIR=${TMPDIR:-/tmp}
 ##################################################
 # Jetty's hallmark
 ##################################################
-JETTY_INSTALL_TRACE_FILE="etc/jetty.xml"
+JETTY_INSTALL_TRACE_FILE="etc/dzit.jetty.xml"
 
 
 ##################################################
