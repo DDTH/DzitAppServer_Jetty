@@ -10,14 +10,14 @@
 <!-- creates the deployment manager instance                         -->
 <!-- =============================================================== -->
 <Configure id="Server" class="org.eclipse.jetty.server.Server">
-        <Ref id="DeploymentManager">
-          <Call name="addAppProvider">
+    <Ref id="DeploymentManager">
+        <Call name="addAppProvider">
             <Arg>
-              <New class="org.eclipse.jetty.deploy.providers.ContextProvider">
-                <Set name="monitoredDirName"><Property name="jetty.home" default="." />/contexts</Set>
-                <Set name="scanInterval">1</Set>
-              </New>
+                <New class="org.eclipse.jetty.deploy.providers.ContextProvider">
+                    <Set name="monitoredDirName"><Property name="jetty.home" default="." />/contexts</Set>
+                    <Set name="scanInterval">10</Set>
+                </New>
             </Arg>
-          </Call>
-        </Ref>
+        </Call>
+    </Ref>
 </Configure>
