@@ -115,6 +115,8 @@ FileEntry getFileEntry(String zipFilename, String resourceName) throws Exception
 }
 %><%
 String uri = request.getRequestURI();
+String contextPath = pageContext.getServletContext().getContextPath();
+uri = uri.substring(contextPath.length());
 uri = uri.replaceAll("^\\/+", "").replaceAll("\\/+$", "");
 String[] tokens = uri.split("[\\/]+");
 String thirdPartyName = tokens.length > 1 ? tokens[1] : null;
