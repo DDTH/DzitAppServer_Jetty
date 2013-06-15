@@ -8,7 +8,7 @@
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<Set name="contextPath">/hazelcast</Set>
 	<Set name="resourceBase">
-		<SystemProperty name="jetty.home" default="." /><![CDATA[/contexts/hazelcast]]></Set>
+		<SystemProperty name="jetty.home" default="." /><![CDATA[/contexts/hazelcastcp-2.6]]></Set>
 
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<!-- Login Service configuration -->
