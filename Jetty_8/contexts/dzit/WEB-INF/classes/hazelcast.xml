@@ -24,7 +24,7 @@
     </group>
     <management-center enabled="true" update-interval="5">http://127.0.0.1:8080/hazelcast</management-center>
     <network>
-        <port auto-increment="true">8700</port>
+        <port auto-increment="false">8700</port>
         <outbound-ports>
             <!--
             Allowed port range when connecting to other nodes.
