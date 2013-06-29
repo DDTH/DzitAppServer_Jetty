@@ -17,7 +17,8 @@ JPDA_ADDRESS=8000
 #ACTIVEMQ_BASE="$ACTIVEMQ_HOME"
 #OPTS_JVM="-Xdebug -Xrunjdwp:transport=$JPDA_TRANSPORT,address=$JPDA_ADDRESS,server=y,suspend=n -server -Xms128m -Xmx128m -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:PrintFLSStatistics=1 -XX:PrintCMSStatistics=1 -XX:+PrintTenuringDistribution -XX:+PrintGCDetails -XX:+PrintGCDateStamps -verbose:gc -Xloggc:$JETTY_HOME/logs/garbage.log"
 #OPTS_ACTIVEMQ="-Dactivemq.home=$ACTIVEMQ_HOME -Dactivemq.base=$ACTIVEMQ_BASE -Dorg.apache.activemq.UseDedicatedTaskRunner=false -Dorg.apache.activemq.store.kahadb.LOG_SLOW_ACCESS_TIME=200"
-#JETTY_OPTS="-Dhazelcast.mancenter.home=$JETTY_HOME/data/hazelcast -Dspring.profiles.active=dev $OPTS_ACTIVEMQ $OPTS_JVM"
+#OPTS_DASP="-Ddasp.logs.home=$JETTY_HOME/logs -Ddasp.data.home=$JETTY_HOME/data/dasp -Dhazelcast.mancenter.home=$JETTY_HOME/data/hazelcast -Dspring.profiles.active=dev"
+#JETTY_OPTS="$OPTS_DASP $OPTS_ACTIVEMQ $OPTS_JVM"
 
 JAVA_OPTIONS=$JETTY_OPTS
 

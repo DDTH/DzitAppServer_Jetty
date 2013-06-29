@@ -12,7 +12,8 @@ rem set ACTIVEMQ_HOME=%JETTY_HOME%\activemq
 rem set ACTIVEMQ_BASE=%ACTIVEMQ_HOME%
 rem set OPTS_JVM=-Xdebug -Xrunjdwp:transport=%JPDA_TRANSPORT%,address=%JPDA_ADDRESS%,server=y,suspend=n -server -Xms128m -Xmx128m -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:PrintFLSStatistics=1 -XX:PrintCMSStatistics=1 -XX:+PrintTenuringDistribution -XX:+PrintGCDetails -XX:+PrintGCDateStamps -verbose:gc -Xloggc:%JETTY_HOME%\logs\garbage.log
 rem set OPTS_ACTIVEMQ=-Dactivemq.home=%ACTIVEMQ_HOME% -Dactivemq.base=%ACTIVEMQ_BASE% -Dorg.apache.activemq.UseDedicatedTaskRunner=false -Dorg.apache.activemq.store.kahadb.LOG_SLOW_ACCESS_TIME=200
-rem set JETTY_OPTS=-Djetty.home=%JETTY_HOME% -Djetty.logs=%JETTY_HOME%/logs -Djava.io.tmpdir=%JETTY_HOME%/tmp -Dhazelcast.mancenter.home=%JETTY_HOME%\data\hazelcast -Dspring.profiles.active=dev %OPTS_ACTIVEMQ% %OPTS_JVM%
+rem set OPTS_DASP=-Ddasp.logs.home=%JETTY_HOME%\logs -Ddasp.data.home=%JETTY_HOME%\data\dasp -Dhazelcast.mancenter.home=%JETTY_HOME%\data\hazelcast -Dspring.profiles.active=dev
+rem set JETTY_OPTS=-Djetty.home=%JETTY_HOME% -Djetty.logs=%JETTY_HOME%/logs -Djava.io.tmpdir=%JETTY_HOME%/tmp %OPTS_DASP% %OPTS_ACTIVEMQ% %OPTS_JVM%
 
 set STOP.PORT=8005
 set STOP.KEY=jetty_stop_key

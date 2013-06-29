@@ -14,7 +14,8 @@ esac
 #ACTIVEMQ_BASE="$ACTIVEMQ_HOME"
 #OPTS_JVM="-server -Xms2048m -Xmx2048m -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true -XX:+UseParNewGC -XX:+UseConcMarkSweepGC"
 #OPTS_ACTIVEMQ="-Dactivemq.home=$ACTIVEMQ_HOME -Dactivemq.base=$ACTIVEMQ_BASE -Dorg.apache.activemq.UseDedicatedTaskRunner=false -Dorg.apache.activemq.store.kahadb.LOG_SLOW_ACCESS_TIME=200"
-#JETTY_OPTS="-Dhazelcast.mancenter.home=$JETTY_HOME/data/hazelcast -Dspring.profiles.active=production $OPTS_ACTIVEMQ $OPTS_JVM"
+#OPTS_DASP="-Ddasp.logs.home=$JETTY_HOME/logs -Ddasp.data.home=$JETTY_HOME/data/dasp -Dhazelcast.mancenter.home=$JETTY_HOME/data/hazelcast -Dspring.profiles.active=production"
+#JETTY_OPTS="$OPTS_DASP $OPTS_ACTIVEMQ $OPTS_JVM"
 
 JAVA_OPTIONS=$JETTY_OPTS
 
